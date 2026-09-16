@@ -49,6 +49,11 @@ try {
     await page.goto(base + route, { waitUntil: 'domcontentloaded' });
     await page.locator('h1').waitFor();
     await page.evaluate(() => document.fonts.ready);
+    for (const image of await page.locator('.case-gallery-image img').all()) {
+      await image.scrollIntoViewIfNeeded();
+      await image.evaluate(image => image.decode());
+    }
+    await page.evaluate(() => window.scrollTo(0, 0));
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1), false, route);
     await page.screenshot({ path: '.local/qa/portfolio-mobile-' + route.split('/').pop() + '.png', fullPage: true });
   }
