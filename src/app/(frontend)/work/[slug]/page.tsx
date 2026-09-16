@@ -35,6 +35,7 @@ export default async function Project({ params }: Props) {
   }
   const next = projects[(projects.indexOf(p) + 1) % projects.length];
   const presentation = projectPresentation(p.slug);
+  const details = p.details?.filter((detail) => detail.eyebrow?.trim().toLowerCase() !== "project credits") || [];
   return (
     <main id="main">
       <section className="page-hero wrap">
@@ -110,14 +111,14 @@ export default async function Project({ params }: Props) {
           </article>
         ))}
       </section>
-      {!!p.details?.length && (
+      {!!details.length && (
         <section className="case-details wrap" aria-labelledby="case-details-title">
           <div className="case-details-intro">
             <span className="section-label">Inside the work</span>
-            <h2 id="case-details-title">{presentation ? "Scope & collaboration." : "Designed around the visitor journey."}</h2>
+            <h2 id="case-details-title">{presentation ? "Scope of work." : "Designed around the visitor journey."}</h2>
           </div>
           <div className="case-details-grid">
-            {p.details.map((detail, index) => (
+            {details.map((detail, index) => (
               <article className="case-detail-card" key={detail.title}>
                 <span className="case-detail-number">{String(index + 1).padStart(2, "0")}</span>
                 {detail.eyebrow && <span className="case-detail-eyebrow">{detail.eyebrow}</span>}
