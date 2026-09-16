@@ -303,7 +303,7 @@ export const pageSeeds = [
     slug: "work",
     title: "Ideas made into worlds.",
     intro:
-      "Selected client work across strategy, design, and digital experiences.",
+      "Selected work across websites, product interfaces, brand campaigns, and search.",
   },
   {
     slug: "services",
@@ -319,7 +319,7 @@ export const pageSeeds = [
   },
 ];
 export const siteSeed = {
-  contentVersion: 3,
+  contentVersion: 4,
   methodTitle: "Close collaboration. Open possibilities.",
   methodSteps: [
     {
@@ -366,7 +366,7 @@ export const siteSeed = {
     "We connect the people who build your presence with the people who bring it to the world. Shared thinking, from first idea to next opportunity.",
   workTitle: "A few possible futures.",
   workDescription:
-    "Selected client work across strategy, design, and digital experiences.",
+    "Selected work across websites, product interfaces, brand campaigns, and search.",
   studioTitle: "Good things happen between us.",
   studioBody:
     "Paertner is built around a simple belief: the best work happens when strategy and craft share the same table. We bring marketing and digital creation into one conversation, from the first question to the final detail.",

@@ -3,6 +3,7 @@ import { getPayload } from "payload";
 import config from "@payload-config";
 import { cache } from "react";
 import type { Site, Project, Service } from "./content";
+import { projectPresentation } from "./portfolio";
 export const cms = cache(() => getPayload({ config }));
 export const getSite = cache(async () => {
   const data = await (await cms()).findGlobal({ slug: "site" });
@@ -25,7 +26,18 @@ export const getProjects = cache(async () => {
     depth: 1,
     overrideAccess: false,
   });
-  return r.docs as unknown as Project[];
+  return r.docs.map((doc) => {
+    const entry = projectPresentation(doc.slug);
+    if (!entry) return doc;
+    return {
+      ...doc,
+      image: doc.image || { id: -doc.id, url: entry.cover, alt: doc.title + " — selected project work" },
+      screens: doc.screens?.length ? doc.screens : entry.gallery.map((screen, index) => ({
+        image: { id: -(index + 1), url: screen.src, alt: screen.alt },
+        caption: screen.caption,
+      })),
+    };
+  }) as unknown as Project[];
 });
 export const getServices = cache(async () => {
   const r = await (

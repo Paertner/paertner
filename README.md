@@ -15,6 +15,8 @@ The setup command extracts only the four required website logos from the private
 
 ## Editing
 
+The September portfolio expansion is catalogued in `src/lib/portfolio-projects.json`, with source-page references and project credits. Content version 4 imports these projects once without replacing existing project edits. Optimized covers and gallery images are shipped in `public/images/portfolio`; the website uses these when a project has no CMS-uploaded images. CMS uploads take precedence. Keep this directory with the application when deploying. Source PDFs are not distributed. Figma originals could not be accessed through the connector; the UI/UX images in this release are extracted from the supplied Paertner PDF.
+
 Open `/admin`. Manage projects (including drafts and versions), services, image uploads, website content, navigation, contact information, legal copy, redirects, and inquiries. Uploads require alternative text. Draft projects are excluded from public pages and public API reads. There is one administrator. Public account creation is disabled.
 
 Concept work is visibly identified. No fabricated testimonials or performance claims are used. The website is `noindex` by default. Review real content and enable indexing in Website content when ready.

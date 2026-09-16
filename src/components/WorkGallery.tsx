@@ -3,17 +3,19 @@ import { useState } from "react";
 export default function WorkGallery({
   items,
 }: {
-  items: { id: number; category: string; node: React.ReactNode }[];
+  items: { id: number; categories: string[]; node: React.ReactNode }[];
 }) {
   const [filter, setFilter] = useState("All");
-  const shown = items.filter((i) => filter === "All" || i.category === filter);
+  const shown = items.filter((i) => filter === "All" || i.categories.includes(filter));
+  const filters = ["All", "Web development", "UI/UX design", "Brand & graphic design", "Social & campaigns", "SEO & analysis"];
   return (
     <>
       <div className="filters" aria-label="Filter projects">
-        {["All", "SEO", "Social & campaigns", "Web development"].map((f) => (
+        {filters.filter((f) => f === "All" || items.some((i) => i.categories.includes(f))).map((f) => (
           <button
             key={f}
             aria-pressed={filter === f}
+            aria-controls="portfolio-results"
             onClick={() => setFilter(f)}
           >
             {f}
@@ -23,7 +25,7 @@ export default function WorkGallery({
       <p className="sr-only" aria-live="polite">
         {shown.length} projects shown
       </p>
-      <div className="work-grid">
+      <div className="work-grid" id="portfolio-results">
         {shown.map((i) => (
           <div key={i.id} className="gallery-item">
             {i.node}

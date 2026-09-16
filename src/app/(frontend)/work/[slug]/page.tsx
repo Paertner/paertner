@@ -3,6 +3,7 @@ import { getProjects, getSite, cms, asset } from "@/lib/cms";
 import { meta } from "@/lib/seo";
 import { Breadcrumb, SceneImage, Closing } from "@/components/ui";
 import ProjectScreens from "@/components/ProjectScreens";
+import { projectPresentation } from "@/lib/portfolio";
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
@@ -33,6 +34,7 @@ export default async function Project({ params }: Props) {
     notFound();
   }
   const next = projects[(projects.indexOf(p) + 1) % projects.length];
+  const presentation = projectPresentation(p.slug);
   return (
     <main id="main">
       <section className="page-hero wrap">
@@ -58,7 +60,7 @@ export default async function Project({ params }: Props) {
           </div>}
           <div>
             <dt>Project</dt>
-            <dd>{p.concept ? "Independent concept" : "Client work"}</dd>
+            <dd>{p.concept ? "Independent concept" : presentation?.projectKind || "Client work"}</dd>
           </div>
         </dl>
         {p.liveURL && (
@@ -67,6 +69,9 @@ export default async function Project({ params }: Props) {
             <span aria-hidden>↗</span>
           </a>
         )}
+        {!p.liveURL && presentation?.sourceURL && <a className="case-live-link" href={presentation.sourceURL} target="_blank" rel="noreferrer">
+          <span>{presentation.sourceLabel}</span><span aria-hidden>↗</span>
+        </a>}
       </section>
       <div
         className={
@@ -109,7 +114,7 @@ export default async function Project({ params }: Props) {
         <section className="case-details wrap" aria-labelledby="case-details-title">
           <div className="case-details-intro">
             <span className="section-label">Inside the work</span>
-            <h2 id="case-details-title">Designed around the visitor journey.</h2>
+            <h2 id="case-details-title">{presentation ? "Scope & collaboration." : "Designed around the visitor journey."}</h2>
           </div>
           <div className="case-details-grid">
             {p.details.map((detail, index) => (
@@ -124,15 +129,15 @@ export default async function Project({ params }: Props) {
         </section>
       )}
       {!!p.screens?.length && (
-        <section className="case-gallery wrap" aria-label={p.title + " website screens"}>
+        <section className="case-gallery wrap" aria-label={p.title + " project gallery"}>
           <div className="case-gallery-heading">
-            <span className="section-label">Selected screens</span>
-            <p>Explore the website, screen by screen. Select an image for a closer look.</p>
+            <span className="section-label">{presentation ? "Selected work" : "Selected screens"}</span>
+            <p>{presentation ? "Explore the details. Select an image for a closer look." : "Explore the website, screen by screen. Select an image for a closer look."}</p>
           </div>
           <ProjectScreens screens={p.screens.filter((screen) => screen.image?.url).map((screen) => ({
             src: screen.image.url || "",
             alt: screen.image.alt || "",
-            caption: screen.caption || "Website screen",
+            caption: screen.caption || "Project detail",
           }))} />
         </section>
       )}

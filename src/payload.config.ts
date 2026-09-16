@@ -12,6 +12,7 @@ import { s3Storage } from "@payloadcms/storage-s3";
 import sharp from "sharp";
 import path from "node:path";
 import fs from "node:fs";
+import { portfolioCatalog } from "./lib/portfolio.ts";
 import {
   serviceSeeds,
   projectSeeds,
@@ -527,6 +528,24 @@ export default buildConfig({
         });
       }
       await payload.updateGlobal({ slug: "site", data: { contentVersion: 3 } });
+    }
+    // One-time content import. Existing CMS edits and later deletions remain authoritative.
+    if (!existing.contentVersion || existing.contentVersion < 4) {
+      for (const { project } of portfolioCatalog) {
+        const found = await payload.count({ collection: "projects", where: { slug: { equals: project.slug } } });
+        if (!found.totalDocs) {
+          await payload.create({ collection: "projects", data: project as any });
+        }
+      }
+      const previousIntro = "Selected client work across strategy, design, and digital experiences.";
+      const workPage = await payload.find({ collection: "pages", where: { slug: { equals: "work" } }, limit: 1 });
+      if (workPage.docs[0]?.intro === previousIntro) {
+        await payload.update({ collection: "pages", id: workPage.docs[0].id, data: { intro: siteSeed.workDescription } });
+      }
+      await payload.updateGlobal({ slug: "site", data: {
+        contentVersion: 4,
+        ...(existing.workDescription === previousIntro ? { workDescription: siteSeed.workDescription } : {}),
+      } });
     }
   },
 });

@@ -35,7 +35,7 @@ export default async function Home() {
       <section className="work-section wrap" data-sc-act="flow">
         <div className="work-heading">
           <div>
-            <span className="section-label">Selected explorations</span>
+            <span className="section-label">Selected work</span>
             <h2>{site.workTitle}</h2>
           </div>
           <p>{site.workDescription}</p>

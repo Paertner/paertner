@@ -23,7 +23,7 @@ export default function ProjectScreens({ screens }: { screens: Screen[] }) {
         <figcaption><span>{String(index + 1).padStart(2, "0")}</span>{screen.caption}</figcaption>
       </figure>)}
     </div>
-    <dialog ref={dialog} className="screen-viewer" aria-label="Website screen gallery" onClick={(event) => {
+    <dialog ref={dialog} className="screen-viewer" aria-label="Project image gallery" onClick={(event) => {
       if (event.target === event.currentTarget) dialog.current?.close();
     }} onKeyDown={(event) => {
       if (event.key === "ArrowRight") { event.preventDefault(); move(1); }

@@ -156,14 +156,17 @@ try {
     });
   }
   await visit("/work");
-  await page.getByRole("button", { name: "SEO", exact: true }).click();
+  const allProjectCount = await page.locator(".gallery-item").count();
+  await page.getByRole("button", { name: "SEO & analysis", exact: true }).click();
   check(
-    (await page.locator(".gallery-item").count()) === 2,
+    (await page.locator(".gallery-item").count()) > 0 &&
+      (await page.locator(".gallery-item").count()) < allProjectCount &&
+      (await page.getByRole("link", { name: "ABB Bank", exact: true }).count()) === 1,
     "Work filter returns matching projects",
   );
   await page.getByRole("button", { name: "All", exact: true }).click();
   check(
-    (await page.locator(".gallery-item").count()) === 7,
+    (await page.locator(".gallery-item").count()) === allProjectCount,
     "All work restored",
   );
   await visit("/book?service=SEO");

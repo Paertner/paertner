@@ -2,10 +2,11 @@ import { getProjects, getSite, getPage } from "@/lib/cms";
 import { meta } from "@/lib/seo";
 import { Breadcrumb, ProjectTile, Closing } from "@/components/ui";
 import WorkGallery from "@/components/WorkGallery";
+import { projectCategories } from "@/lib/portfolio";
 export const generateMetadata = () =>
   meta(
     "Work",
-    "Explore Paertner’s client websites in digital marketing, brand strategy, web design, and development.",
+    "Explore Paertner’s work in websites, product interfaces, branding, social campaigns, SEO, and business analysis.",
     "/work",
   );
 export default async function Work() {
@@ -28,11 +29,7 @@ export default async function Work() {
         <WorkGallery
           items={projects.map((p) => ({
             id: p.id,
-            category: p.services.some((s) => /seo|search/i.test(s.label))
-              ? "SEO"
-              : p.services.some((s) => /social|paid|campaign/i.test(s.label))
-                ? "Social & campaigns"
-                : "Web development",
+            categories: projectCategories(p.services),
             node: <ProjectTile project={p} />,
           }))}
         />
