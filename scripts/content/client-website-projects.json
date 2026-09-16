@@ -1,0 +1,247 @@
+[
+  {
+    "key": "luxoranova",
+    "title": "Luxora Nova",
+    "slug": "luxora-nova",
+    "sector": "Technology & electronics",
+    "descriptor": "Five trading divisions. One clear route to supply.",
+    "liveURL": "https://luxoranova.ae/",
+    "challenge": "Make a broad electronics wholesale offer easy for business buyers to understand, from computer systems and mobile devices to home appliances and commercial brokerage.",
+    "idea": "Organize the experience around five trading divisions, with a consistent route from the first introduction to a relevant service page and quote request.",
+    "execution": "A multi-page company website combines a navy and orange visual identity, a division-led homepage, individual service pages, company information and direct enquiry options.",
+    "result": "A coherent digital presentation that lets prospective buyers explore the product scope, understand the company and reach its trade desk.",
+    "details": [
+      {
+        "eyebrow": "Information architecture",
+        "title": "Five divisions, clearly signposted.",
+        "body": "A dedicated route for each trading division helps visitors find the relevant supply category without working through an undifferentiated list."
+      },
+      {
+        "eyebrow": "Visual direction",
+        "title": "Technology with a clear commercial focus.",
+        "body": "A fine grid, dark blue surfaces, bold white type and orange actions connect the technology offer with an orderly business-facing interface."
+      },
+      {
+        "eyebrow": "Company profile",
+        "title": "Context before the conversation.",
+        "body": "The About page brings the company story, operating location and trading scope into a single readable profile."
+      },
+      {
+        "eyebrow": "Enquiry journey",
+        "title": "From division to quote request.",
+        "body": "Service and contact links recur throughout the experience, giving buyers a direct next step after exploring the offer."
+      }
+    ],
+    "order": -0.6,
+    "concept": false,
+    "featured": true,
+    "year": "",
+    "art": "creation",
+    "tone": "dark",
+    "services": [
+      {
+        "label": "Web design"
+      },
+      {
+        "label": "Development"
+      }
+    ],
+    "_status": "published"
+  },
+  {
+    "key": "veloxenergy",
+    "title": "Velox Energy",
+    "slug": "velox-energy",
+    "sector": "Energy & commodity trading",
+    "descriptor": "Energy trading, presented with purpose and precision.",
+    "liveURL": "https://veloxenergy.ae/",
+    "challenge": "Explain a multi-category energy trading business to counterparties who need to understand product scope, operating approach and how to make an enquiry.",
+    "idea": "Build the story around the trading desk: what it trades, how a cargo moves and where a prospective partner starts a conversation.",
+    "execution": "A dark editorial website pairs large typography and industrial photography with four commodity lines, a staged operating process, a company profile and trade contact routes.",
+    "result": "A focused online introduction that connects the company's positioning to its commodity range and trade-enquiry path.",
+    "details": [
+      {
+        "eyebrow": "Art direction",
+        "title": "Energy, in motion.",
+        "body": "Large white and amber lettering over refinery imagery gives the opening a strong identity, supported by restrained labels and clear navigation."
+      },
+      {
+        "eyebrow": "Product structure",
+        "title": "Four lines, one desk.",
+        "body": "Crude oil, petroleum products, lubricants and grease, and trading abroad are organized into distinct sections with supporting product information."
+      },
+      {
+        "eyebrow": "Process storytelling",
+        "title": "From source to settlement.",
+        "body": "The homepage explains sourcing, trade structure, shipping and settlement as an ordered sequence, making the operating approach easier to follow."
+      },
+      {
+        "eyebrow": "Contact design",
+        "title": "A clear start to the trade conversation.",
+        "body": "Prominent Start a trade actions connect the introduction and product information to the dedicated contact page."
+      }
+    ],
+    "order": -0.8,
+    "concept": false,
+    "featured": true,
+    "year": "",
+    "art": "creation",
+    "tone": "dark",
+    "services": [
+      {
+        "label": "Web design"
+      },
+      {
+        "label": "Development"
+      }
+    ],
+    "_status": "published"
+  },
+  {
+    "key": "nexusoil",
+    "title": "Nexus Oil",
+    "slug": "nexus-oil",
+    "sector": "Petroleum & lubricants",
+    "descriptor": "A detailed trading offer with a distinctive digital identity.",
+    "liveURL": "https://nexusoil.ae/",
+    "challenge": "Present a technical petroleum trading offer with enough structure for visitors to navigate products, operational services and enquiry requirements.",
+    "idea": "Pair a memorable opening with detailed, clearly grouped information about product families, cargo processes and company context.",
+    "execution": "The site combines fluid oil-inspired visuals, oversized typography, photographic service sections, a detailed company profile and a dedicated trading-desk contact page.",
+    "result": "A connected company and service presentation that supports both a quick introduction and a deeper read before making a cargo enquiry.",
+    "details": [
+      {
+        "eyebrow": "Visual identity",
+        "title": "A material reference made digital.",
+        "body": "The dark, fluid hero references the product itself, while amber actions and spacious typography keep the navigation and message visible."
+      },
+      {
+        "eyebrow": "Content depth",
+        "title": "Product families with room for detail.",
+        "body": "The services experience separates fuel categories and lubricants, placing product descriptions and operational context within a clear hierarchy."
+      },
+      {
+        "eyebrow": "Process clarity",
+        "title": "A cargo journey, step by step.",
+        "body": "An ordered sequence on the homepage explains the stages between an initial enquiry and delivery, supporting the site's operational focus."
+      },
+      {
+        "eyebrow": "Company and contact",
+        "title": "A direct route to the trading desk.",
+        "body": "Company details and a dedicated contact destination give visitors a way to move from reading the offer to starting a relevant conversation."
+      }
+    ],
+    "order": -0.7,
+    "concept": false,
+    "featured": true,
+    "year": "",
+    "art": "creation",
+    "tone": "dark",
+    "services": [
+      {
+        "label": "Web design"
+      },
+      {
+        "label": "Development"
+      }
+    ],
+    "_status": "published"
+  },
+  {
+    "key": "equipogroup",
+    "title": "EQUIPO",
+    "slug": "equipo-group",
+    "sector": "Industrial equipment",
+    "descriptor": "Industrial capability, organized for the next enquiry.",
+    "liveURL": "https://equipogroup.com/",
+    "challenge": "Bring equipment supply, engineering support and industrial services together in a website that serves several kinds of business buyer.",
+    "idea": "Use an industrial visual language and a clear service structure to connect company capability, service detail and contact options.",
+    "execution": "A red, black and white company website combines industrial photography, a service directory, individual service pages, company information and enquiry routes.",
+    "result": "A substantial business website that gives prospective customers multiple ways to understand the offer and contact the company.",
+    "details": [
+      {
+        "eyebrow": "Brand presentation",
+        "title": "A recognizable industrial presence.",
+        "body": "Bold red accents, condensed type and workshop photography give the website a consistent equipment and engineering character."
+      },
+      {
+        "eyebrow": "Service architecture",
+        "title": "A directory built around practical needs.",
+        "body": "Equipment supply, custom solutions, automation and technical support appear as separate services with dedicated detail pages."
+      },
+      {
+        "eyebrow": "Company story",
+        "title": "Capabilities beyond the catalogue.",
+        "body": "The About page presents the company's supply and support approach alongside its industrial experience."
+      },
+      {
+        "eyebrow": "Customer journey",
+        "title": "Keep the next step visible.",
+        "body": "Quote prompts and contact information sit alongside the main navigation, with a dedicated contact page for enquiries."
+      }
+    ],
+    "order": -0.9,
+    "concept": false,
+    "featured": true,
+    "year": "",
+    "art": "creation",
+    "tone": "dark",
+    "services": [
+      {
+        "label": "Web design"
+      },
+      {
+        "label": "Development"
+      }
+    ],
+    "_status": "published"
+  },
+  {
+    "key": "iensol",
+    "title": "IENSOL",
+    "slug": "iensol",
+    "sector": "Scientific & industrial instruments",
+    "descriptor": "A technical catalogue built around product discovery.",
+    "liveURL": "https://iensol.com/",
+    "challenge": "Help visitors navigate a wide scientific and industrial equipment range while keeping product enquiries and support within reach.",
+    "idea": "Put discovery first: combine category navigation, keyword search, product browsing and clearly labeled enquiry actions.",
+    "execution": "A yellow, black and white catalogue website connects category-led navigation, product listings, individual product pages, company information and contact routes.",
+    "result": "A product-focused digital destination that supports browsing across instrument categories and moving from a selected item toward an enquiry.",
+    "details": [
+      {
+        "eyebrow": "Discovery system",
+        "title": "Several ways to find the right instrument.",
+        "body": "Category navigation and product search give buyers different starting points, whether they know the instrument family or a specific product name."
+      },
+      {
+        "eyebrow": "Catalogue structure",
+        "title": "Technical range, organized into categories.",
+        "body": "The catalogue groups analytical instruments, petroleum testing and other equipment families into a navigable product hierarchy."
+      },
+      {
+        "eyebrow": "Product journey",
+        "title": "From listing to enquiry.",
+        "body": "Product cards lead to dedicated detail pages and enquiry actions, keeping the next step connected to the item being considered."
+      },
+      {
+        "eyebrow": "Brand and support",
+        "title": "A consistent frame for a broad range.",
+        "body": "A clear yellow and black navigation system ties together the catalogue, company profile and sales-and-service contact information."
+      }
+    ],
+    "order": -0.5,
+    "concept": false,
+    "featured": true,
+    "year": "",
+    "art": "creation",
+    "tone": "dark",
+    "services": [
+      {
+        "label": "Web design"
+      },
+      {
+        "label": "Development"
+      }
+    ],
+    "_status": "published"
+  }
+]

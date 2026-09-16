@@ -1,0 +1,12 @@
+# Service image prompts
+
+Generated with built-in imagegen. Illustrative service examples, fictional brands. Optimized as 1536×1024 WebP.
+
+Shared direction: landscape 3:2 photorealistic agency portfolio, studio daylight, detailed finished content and UI, tangible deliverables, no watermarks or claims of client engagement.
+
+- service-digital-marketing-studio.webp: Integrated digital marketing planning workspace, overhead editorial photo of a laptop with a channel strategy board, neatly arranged creative campaign cards, a customer journey map and a content calendar. Include real example content headings Awareness, Consideration, Conversion. Navy, cream, olive. No invented performance metrics.
+- service-websites-web-apps-studio.webp: Web design and development deliverable presentation, realistic desktop monitor displaying sophisticated responsive architecture website with large building photography and project cards, tablet showing component library, phone mobile page. Include small design sheets with typography, navigation and layout examples. Warm gray and black.
+- service-seo-studio.webp: SEO search strategy workspace: laptop showing realistic search results for a sustainable interior design service, printed keyword intent table and information architecture diagram, content brief with clear headings Topic, Intent, Structure. Off-white and midnight blue, tactile paper. No rankings guarantees or fabricated growth statistics.
+- service-social-media-studio.webp: Social media content production spread, realistic phone with curated skincare brand feed, six colorful portrait post cards with product photography and lifestyle imagery, clearly designed social content calendar, labels Educate, Inspire, Connect. Peach, forest green and cream. No follower or engagement counts.
+- service-paid-media-studio.webp: Paid advertising creative testing presentation: laptop with a clean campaign planning interface, three finished ad concepts for boutique travel with beautiful hotel and pool photos, phone landing page preview. Small cards labeled Audience, Creative, Landing page. Burgundy and cream, no fabricated ROAS, revenue or analytics.
+- service-brand-content-studio.webp: Brand and content design workspace, refined brand guideline booklet open to typography and color palette, printed editorial photography, finished website copy blocks and social layouts, tasteful amber glass product packaging for an imaginary lifestyle brand. Headings Voice, Story, Identity. Rust, ink, warm ivory.

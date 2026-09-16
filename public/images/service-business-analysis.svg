@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024">
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#25272a"/><stop offset="1" stop-color="#0b0d0d"/></linearGradient>
+    <linearGradient id="panel" x2="0" y2="1"><stop stop-color="#252829"/><stop offset="1" stop-color="#17191a"/></linearGradient>
+  </defs>
+  <rect width="1536" height="1024" fill="url(#bg)"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="108" y="112" fill="#f2f2ec" font-size="42" letter-spacing="-2">paertner</text>
+    <text x="1428" y="105" text-anchor="end" fill="#b9bdb9" font-size="17" letter-spacing="3">BUSINESS ANALYSIS / 07</text>
+    <path d="M108 149H1428" stroke="#484c49"/>
+    <text x="108" y="262" fill="#f2f2ec" font-size="78" font-weight="600" letter-spacing="-3">Clarity before</text>
+    <text x="108" y="350" fill="#c4f25a" font-size="78" font-weight="600" letter-spacing="-3">the next move.</text>
+    <text x="110" y="410" fill="#b9bdb9" font-size="24">From business questions to a plan your team can build.</text>
+    <g fill="none" stroke="#c4f25a" stroke-width="2">
+      <path d="M494 635H574M562 623L574 635L562 647M962 635H1042M1030 623L1042 635L1030 647"/>
+    </g>
+    <g fill="url(#panel)" stroke="#484c49">
+      <rect x="108" y="502" width="386" height="276" rx="4"/>
+      <rect x="575" y="502" width="386" height="276" rx="4"/>
+      <rect x="1042" y="502" width="386" height="276" rx="4"/>
+    </g>
+    <g fill="#c4f25a" font-size="18" letter-spacing="2">
+      <text x="140" y="550">01 / DISCOVER</text><text x="607" y="550">02 / DEFINE</text><text x="1074" y="550">03 / PRIORITIZE</text>
+    </g>
+    <g fill="#f2f2ec" font-size="34">
+      <text x="140" y="616">The real problem.</text><text x="607" y="616">A shared scope.</text><text x="1074" y="616">A clear direction.</text>
+    </g>
+    <g fill="#b9bdb9" font-size="22">
+      <text x="140" y="681">Stakeholder interviews</text><text x="140" y="719">Current process maps</text>
+      <text x="607" y="681">Business requirements</text><text x="607" y="719">Acceptance criteria</text>
+      <text x="1074" y="681">Value, effort, and risk</text><text x="1074" y="719">Delivery roadmap</text>
+    </g>
+    <path d="M108 861H1428" stroke="#484c49"/>
+    <circle cx="118" cy="911" r="9" fill="#c4f25a"/>
+    <text x="144" y="919" fill="#f2f2ec" font-size="22">Better questions. Clearer requirements.</text>
+    <text x="1428" y="919" text-anchor="end" fill="#b9bdb9" font-size="18">STRATEGY INTO ACTION ↗</text>
+  </g>
+</svg>

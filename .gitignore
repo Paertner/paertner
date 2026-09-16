@@ -1,0 +1,29 @@
+# Local planning and private brand assets
+/WEBSITE_PLAN.md
+/Brandkit/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Dependencies and build output
+/node_modules/
+/.next/
+/dist/
+/coverage/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+*.log
+
+/scrollcraft/
+/.local/
+/data/
+/public/brand/
+/test-results/
+/playwright-report/
+*.tsbuildinfo
+
+/.local-optimize.mjs
