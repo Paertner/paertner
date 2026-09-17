@@ -1,0 +1,42 @@
+name: paertner
+services:
+  app:
+    image: ${APP_IMAGE:?Set APP_IMAGE to the tested release}
+    restart: unless-stopped
+    init: true
+    env_file: /opt/paertner/shared/app.env
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - /opt/paertner/shared/data:/app/data
+      - /opt/paertner/shared/brand:/app/public/brand:ro
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 10s
+      start_period: 30s
+      retries: 4
+  proxy:
+    image: caddy:2@sha256:13ba145cba2f3e28fa801994876e4c086d1b95d5aa2a520a734765ffb6b12017
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /opt/paertner/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+volumes:
+  caddy_data:
+  caddy_config:

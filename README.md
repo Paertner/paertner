@@ -31,7 +31,7 @@ Initialize a production administrator with INITIAL_ADMIN_EMAIL and INITIAL_ADMIN
 
 The inquiry endpoint validates origin, input, and request size and limits repeated submissions per email address. Configure infrastructure request limits for an internet-facing deployment.
 
-Launch requires final legal review, confirmed contact details, real project content, domain/hosting configuration, and review of indexing. This repository does not deploy or publish automatically.
+Launch requires final legal review, confirmed contact details, real project content, domain/hosting configuration, and review of indexing. Production infrastructure and the push-to-main deployment workflow are documented in [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ## Verification
 

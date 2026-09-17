@@ -7,3 +7,10 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+## Production server and deployment
+
+Before doing hosting, DNS, SSH, GitHub Actions, production data, or release work,
+read `DEPLOYMENT.md`. It records this project's VPS, access method, persistent
+paths, deployment process, verification commands, and recovery procedure.
+Never commit credentials, private SSH keys, `.env` files, CMS data, or backups.

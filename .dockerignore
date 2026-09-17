@@ -1,0 +1,15 @@
+.git
+.github
+.next
+node_modules
+.env*
+.local
+data
+Brandkit
+public/brand
+scrollcraft
+test-results
+playwright-report
+*.tsbuildinfo
+*.log
+WEBSITE_PLAN.md
