@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { logoParticles } from "@/lib/logo-particles";
+import { SIMPLE_CLOSING_QUERY } from "@/lib/closing-motion";
 
 /** Page-owned choreography; the shared ScrollCraft engine remains unchanged. */
 export default function ScrollSpark() {
@@ -32,6 +33,7 @@ export default function ScrollSpark() {
     const burstTime = 5.8;
     let launchReady = false;
     const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    const simpleClosing = matchMedia(SIMPLE_CLOSING_QUERY);
     let frame = 0;
     let current = scrollY;
     let target = current;
@@ -108,11 +110,13 @@ export default function ScrollSpark() {
       return { x: originX + (x - originX) * departure, y: originY + (y - originY) * departure };
     };
     const paint = (time: number, dt: number) => {
+      const simple = simpleClosing.matches;
       if (current < finish - height * .6 && burstAt >= 0) { burstAt = -1; restoreClosing(); }
       const destination = point(current);
       const p = { ...destination };
       const gather = ease((current - finish + height * .6) / (height * .6));
-      const anchorY = Math.max(130, Math.min(height * .8, closingTop - scrollY + 85));
+      const markRect = simple ? closingMark?.getBoundingClientRect() : null;
+      const anchorY = Math.max(130, Math.min(height * .8, markRect ? markRect.top + markRect.height / 2 : closingTop - scrollY + 85));
       p.x += (width * .5 - p.x) * gather;
       p.y += (anchorY - p.y) * gather;
       // Two-stage damping carries momentum through scroll changes and reversals.
@@ -133,15 +137,17 @@ export default function ScrollSpark() {
         burstAt = time; burstX = p.x; burstY = p.y; history = []; particles.length = 0;
       }
       const elapsed = burstAt < 0 ? -1 : (time - burstAt) / 1000;
-      const exploding = elapsed >= 0 && elapsed < burstDuration;
+      const exploding = !simple && elapsed >= 0 && elapsed < burstDuration;
+      const settling = simple && elapsed >= 0 && elapsed < .45;
       // Wait for the decoder to reach the flash, not only its requested scroll time.
       if (current < start - height * .15) launchReady = false;
       if (current >= start && (!video || video.readyState < 2 || video.currentTime >= burstTime - .04)) launchReady = true;
       const opacity = launchReady ? ease((current - start) / (height * .09)) : 0;
       syncHeader(opacity > .01);
       const active = opacity > .01 && elapsed < 0;
-      core.setAttribute("opacity", elapsed < 0 ? "1" : "0");
-      trail.setAttribute("opacity", elapsed < 0 ? "1" : "0");
+      const sparkOpacity = elapsed < 0 ? 1 : simple ? 1 - ease(elapsed / .2) : 0;
+      core.setAttribute("opacity", String(sparkOpacity));
+      trail.setAttribute("opacity", String(sparkOpacity));
       burst.setAttribute("opacity", exploding ? "1" : "0");
       if (exploding) {
         const t = clamp(elapsed / burstDuration);
@@ -171,7 +177,11 @@ export default function ScrollSpark() {
         });
       }
       if (closing && !closing.contains(document.activeElement)) {
-        if (elapsed < 0 && gather > 0) { closing.style.clipPath = "circle(0px at 50% 85px)"; closing.style.setProperty("--closing-logo-reveal", "0"); }
+        if (simple) {
+          closing.style.removeProperty("clip-path");
+          closing.style.setProperty("--closing-logo-reveal", String(elapsed < 0 ? (gather > 0 ? 0 : 1) : ease((elapsed - .1) / .35)));
+        }
+        else if (elapsed < 0 && gather > 0) { closing.style.clipPath = "circle(0px at 50% 85px)"; closing.style.setProperty("--closing-logo-reveal", "0"); }
         else if (elapsed >= 0 && elapsed < burstDuration) {
           closing.style.setProperty("--closing-logo-reveal", String(ease((elapsed / burstDuration - .8) / .2)));
           const radius = ease(elapsed / burstDuration) * Math.hypot(width, closing.offsetHeight);
@@ -263,7 +273,7 @@ export default function ScrollSpark() {
       core.setAttribute("transform", `translate(${p.x.toFixed(1)} ${p.y.toFixed(1)}) rotate(${heading * 180 / Math.PI}) scale(${width < 861 ? .48 : 1})`);
       svg.style.opacity = opacity.toFixed(3);
       svg.dataset.scVerifyState = `${p.x.toFixed(0)},${p.y.toFixed(0)},${opacity.toFixed(2)},${head.getAttribute("transform")},${particles.length}`;
-      return active || exploding || (current >= start && current < finish && !launchReady);
+      return active || exploding || settling || (current >= start && current < finish && !launchReady);
     };
     const tick = (time: number) => {
       frame = 0;
@@ -311,7 +321,10 @@ export default function ScrollSpark() {
       start = clipStart + (clipEnd - clipStart) * (low + high) / 2;
       closingTop = closing ? closing.getBoundingClientRect().top + scrollY : main.getBoundingClientRect().bottom + scrollY;
       const maxScroll = document.documentElement.scrollHeight - height;
-      finish = Math.min(closingTop - height * .72, maxScroll - 40);
+      const arrivalTop = simpleClosing.matches && closingMark
+        ? closingMark.getBoundingClientRect().top + scrollY + closingMark.offsetHeight / 2
+        : closingTop;
+      finish = Math.min(arrivalTop - height * .72, maxScroll - 40);
       svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
       const trailFilter = svg.querySelector<SVGFilterElement>("[data-spark-trail-filter]")!;
       trailFilter.setAttribute("width", String(width + 512));
@@ -346,6 +359,7 @@ export default function ScrollSpark() {
     window.addEventListener("blur", resetPointer);
     document.addEventListener("visibilitychange", onVisibility);
     reduced.addEventListener("change", onPreference);
+    simpleClosing.addEventListener("change", onPreference);
     video?.addEventListener("loadedmetadata", measure);
     video?.addEventListener("seeked", wake);
     measure();
@@ -364,6 +378,7 @@ export default function ScrollSpark() {
       window.removeEventListener("blur", resetPointer);
       document.removeEventListener("visibilitychange", onVisibility);
       reduced.removeEventListener("change", onPreference);
+      simpleClosing.removeEventListener("change", onPreference);
     };
   }, [mounted]);
 

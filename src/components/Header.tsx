@@ -18,6 +18,32 @@ export default function Header({
   const dialog = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
+  const submenuEvents = {
+    onPointerEnter: (event: React.PointerEvent<HTMLDetailsElement>) => {
+      if (event.pointerType !== "touch" && matchMedia("(any-hover: hover)").matches) event.currentTarget.open = true;
+    },
+    onPointerLeave: (event: React.PointerEvent<HTMLDetailsElement>) => {
+      if (event.pointerType !== "touch" && !event.currentTarget.querySelector(":focus-visible")) event.currentTarget.open = false;
+    },
+    onBlur: (event: React.FocusEvent<HTMLDetailsElement>) => {
+      if (!event.currentTarget.contains(event.relatedTarget)) event.currentTarget.open = false;
+    },
+    onKeyDown: (event: React.KeyboardEvent<HTMLDetailsElement>) => {
+      if (event.key === "Escape") {
+        event.preventDefault(); event.stopPropagation();
+        event.currentTarget.open = false;
+        event.currentTarget.querySelector("summary")?.focus();
+      }
+    },
+  };
+  const summaryClick = (event: React.MouseEvent<HTMLElement>) => {
+    // Hover opens mouse menus; keep native keyboard and touchscreen activation.
+    if (event.detail > 0 && matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      event.preventDefault();
+      const details = event.currentTarget.parentElement as HTMLDetailsElement;
+      details.open = true;
+    }
+  };
   useEffect(() => {
     const reduced = matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => {
@@ -71,10 +97,8 @@ export default function Header({
         </a>
         <nav aria-label="Main navigation" className="desktop-nav">
           {nav.map((n) => n.href === "/services" ? (
-            <details key={n.href} ref={dropdown} className="services-dropdown" onKeyDown={(event) => {
-              if (event.key === "Escape") { event.preventDefault(); dropdown.current?.removeAttribute("open"); dropdown.current?.querySelector("summary")?.focus(); }
-            }}>
-              <summary>Services <CaretDown size={12} aria-hidden="true" /></summary>
+            <details key={n.href} ref={dropdown} className="services-dropdown" {...submenuEvents}>
+              <summary onClick={summaryClick}>Services <CaretDown size={12} aria-hidden="true" /></summary>
               <div className="services-dropdown-panel">
                 <a href="/services" className="services-overview">Explore all services <span aria-hidden="true"><ArrowIcon /></span></a>
                 {services.map(service => <a key={service.href} href={service.href} aria-current={pathname === service.href ? "page" : undefined}>{service.label}<span aria-hidden="true"><ArrowIcon /></span></a>)}
@@ -128,8 +152,8 @@ export default function Header({
         </div>
         <nav aria-label="Mobile navigation">
           {nav.map((n, i) => n.href === "/services" ? (
-            <details key={n.href} className="mobile-services">
-              <summary><span>0{i + 1}</span>Services <span aria-hidden="true">⌄</span></summary>
+            <details key={n.href} className="mobile-services" {...submenuEvents}>
+              <summary onClick={summaryClick}><span>0{i + 1}</span>Services <span aria-hidden="true">⌄</span></summary>
               <div className="mobile-services-links">
                 <a href="/services">All services</a>
                 {services.map(service => <a key={service.href} href={service.href}>{service.label}</a>)}

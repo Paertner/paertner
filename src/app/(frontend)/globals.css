@@ -2208,6 +2208,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .services-dropdown summary:focus-visible, .mobile-services summary:focus-visible { outline: 2px solid var(--lime); outline-offset: 7px; }
 .services-dropdown[open] summary { color: var(--lime); }
 .services-dropdown-panel { position: absolute; top: calc(100% + 12px); left: -30px; width: 340px; background: #141419; border: 1px solid var(--line); box-shadow: 0 20px 45px #0005; padding: 14px 24px; }
+.services-dropdown-panel::before { content: ""; position: absolute; inset: -14px 0 auto; height: 14px; }
 .desktop-nav .services-dropdown-panel a { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 13px 0; font-size: 14px; color: var(--paper); }
 .desktop-nav .services-dropdown-panel a::after { display: none; }
 .desktop-nav .services-dropdown-panel a:hover, .desktop-nav .services-dropdown-panel a[aria-current] { color: var(--lime); }

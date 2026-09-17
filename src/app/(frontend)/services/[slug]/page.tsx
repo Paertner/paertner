@@ -64,7 +64,6 @@ export default async function Service({ params }: Props) {
             {s.deliverables.map((d, i) => (
               <li key={i}>
                 {d.label}
-                <span aria-hidden><ArrowIcon /></span>
               </li>
             ))}
           </ul>

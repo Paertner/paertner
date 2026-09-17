@@ -1,11 +1,21 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { SIMPLE_CLOSING_QUERY } from "@/lib/closing-motion";
 import { logoStars } from "@/lib/logo-stars";
 import { logoStreams } from "@/lib/logo-streams";
 
 export default function ParticleMark() {
   const ref = useRef<HTMLCanvasElement>(null);
+  const [animated, setAnimated] = useState(false);
   useEffect(() => {
+    const simple = matchMedia(SIMPLE_CLOSING_QUERY);
+    const update = () => setAnimated(!simple.matches);
+    update();
+    simple.addEventListener("change", update);
+    return () => simple.removeEventListener("change", update);
+  }, []);
+  useEffect(() => {
+    if (!animated) return;
     const canvas = ref.current;
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx) return;
@@ -142,6 +152,6 @@ export default function ParticleMark() {
     const resize=new ResizeObserver(measure);resize.observe(canvas);
     reduced.addEventListener("change",preference);document.addEventListener("visibilitychange",preference);measure();
     return()=>{surface.removeEventListener("pointermove",move);surface.removeEventListener("pointerleave",leave);surface.removeEventListener("pointercancel",leave);cancelAnimationFrame(frame);observer.disconnect();resize.disconnect();reduced.removeEventListener("change",preference);document.removeEventListener("visibilitychange",preference);};
-  },[]);
-  return <span className="particle-mark"><canvas ref={ref} aria-hidden="true"/><img src="/brand/mark.svg" alt="" width="841" height="437"/></span>;
+  },[animated]);
+  return <span className="particle-mark">{animated && <canvas ref={ref} aria-hidden="true"/>}<img src="/brand/mark.svg" alt="" width="841" height="437"/></span>;
 }

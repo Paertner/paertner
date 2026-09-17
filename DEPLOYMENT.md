@@ -209,3 +209,14 @@ for future arrows rather than Unicode glyphs, which iOS can render as colored
 emoji. Direction, inherited color and size remain explicit. Mobile checks use
 WebKit (iPhone profile) and Chromium (Android profile); they are browser emulation,
 not physical-device certification.
+
+For the homepage closing animation, screens up to 1200px and touch/coarse-pointer
+devices (including landscape tablets) use a simple ending: the sparkle fades at
+the logo, then the solid lime brand mark appears. They do not run the closing
+burst or particle-logo canvas. Full-size mouse desktops retain the particle
+ending. Reduced-motion users see the static mark. The shared device rule is in
+`src/lib/closing-motion.ts`.
+
+Submenus open on pointer hover where hover is supported, with touchscreen taps
+and native keyboard activation preserved. Navigation arrow icons belong only
+to actionable links/buttons, not static deliverable lists or decorative text.
