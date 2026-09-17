@@ -1,6 +1,7 @@
 import { getSite } from "@/lib/cms";
 import { meta } from "@/lib/seo";
 import { Breadcrumb } from "@/components/ui";
+import ArticleBody from "@/components/ArticleBody";
 export const generateMetadata = () =>
   meta("Terms", "Terms for the Paertner website.", "/terms");
 export default async function Terms() {
@@ -12,13 +13,7 @@ export default async function Terms() {
         <h1>Terms.</h1>
       </section>
       <article className="legal wrap">
-        {!s.allowIndexing && (
-          <div className="draft">
-            Draft terms for the project preview. Review required before public
-            launch.
-          </div>
-        )}
-        <p>{s.terms}</p>
+        <ArticleBody body={s.terms} />
       </article>
     </main>
   );

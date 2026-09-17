@@ -1,9 +1,10 @@
 "use client";
+import ArrowIcon from "@/components/ArrowIcon";
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight, CaretDown, Plus, X } from "@phosphor-icons/react";
+import { CaretDown, Plus, X } from "@phosphor-icons/react";
 export function Arrow({ size = 20 }: { size?: number }) {
-  return <ArrowUpRight size={size} weight="regular" aria-hidden />;
+  return <ArrowIcon size={size} />;
 }
 export default function Header({
   nav,
@@ -75,8 +76,8 @@ export default function Header({
             }}>
               <summary>Services <CaretDown size={12} aria-hidden="true" /></summary>
               <div className="services-dropdown-panel">
-                <a href="/services" className="services-overview">Explore all services <span aria-hidden="true">↗</span></a>
-                {services.map(service => <a key={service.href} href={service.href} aria-current={pathname === service.href ? "page" : undefined}>{service.label}<span aria-hidden="true">↗</span></a>)}
+                <a href="/services" className="services-overview">Explore all services <span aria-hidden="true"><ArrowIcon /></span></a>
+                {services.map(service => <a key={service.href} href={service.href} aria-current={pathname === service.href ? "page" : undefined}>{service.label}<span aria-hidden="true"><ArrowIcon /></span></a>)}
               </div>
             </details>
           ) : (

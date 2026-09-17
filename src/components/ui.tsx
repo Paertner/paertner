@@ -1,3 +1,4 @@
+import ArrowIcon from "@/components/ArrowIcon";
 import ParticleMark from "@/components/ParticleMark";
 import Image from "next/image";
 import type { Project, Site } from "@/lib/content";
@@ -15,7 +16,7 @@ export function LinkArrow({
   return (
     <a href={href} className={"text-link " + className}>
       <span>{children}</span>
-      <span aria-hidden>↗</span>
+      <span aria-hidden><ArrowIcon /></span>
     </a>
   );
 }
@@ -77,7 +78,7 @@ export function ProjectTile({
           {project.year}
         </span>
         <span className="project-go" aria-hidden>
-          ↗
+          <ArrowIcon />
         </span>
       </a>
       <div className="project-caption">
@@ -105,7 +106,7 @@ export function Closing({ site, sparkMark = false }: { site: Site; sparkMark?: b
       <h2>{site.ctaTitle}</h2>
       <a className="closing-link" href="/book">
         <span>Book a call</span>
-        <span aria-hidden>↗</span>
+        <span aria-hidden><ArrowIcon /></span>
       </a>
     </section>
   );
@@ -127,7 +128,7 @@ export function Footer({ site, services }: { site: Site; services: { label: stri
       </div>
       <nav className="footer-services" aria-label="Footer services">
         <a href="/services" className="footer-services-heading">Our services</a>
-        <div>{services.map(service => <a href={service.href} key={service.href}>{service.label}<span aria-hidden="true">↗</span></a>)}</div>
+        <div>{services.map(service => <a href={service.href} key={service.href}>{service.label}<span aria-hidden="true"><ArrowIcon /></span></a>)}</div>
       </nav>
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Paertner</span>
@@ -136,7 +137,7 @@ export function Footer({ site, services }: { site: Site; services: { label: stri
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
         </nav>
-        <a href="#top">Back to top ↑</a>
+        <a href="#top">Back to top <ArrowIcon direction="up" /></a>
       </div>
     </footer>
   );

@@ -1,6 +1,7 @@
 import { getSite } from "@/lib/cms";
 import { meta } from "@/lib/seo";
 import { Breadcrumb } from "@/components/ui";
+import ArticleBody from "@/components/ArticleBody";
 export const generateMetadata = () =>
   meta(
     "Privacy",
@@ -16,13 +17,7 @@ export default async function Privacy() {
         <h1>Privacy.</h1>
       </section>
       <article className="legal wrap">
-        {!s.allowIndexing && (
-          <div className="draft">
-            Preview policy. Final details will be completed before public
-            launch.
-          </div>
-        )}
-        <p>{s.privacy}</p>
+        <ArticleBody body={s.privacy} />
       </article>
     </main>
   );

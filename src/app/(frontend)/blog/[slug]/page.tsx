@@ -1,3 +1,4 @@
+import ArrowIcon from "@/components/ArrowIcon";
 import { notFound } from "next/navigation";
 import { getPost, getPosts } from "@/lib/cms";
 import { meta } from "@/lib/seo";
@@ -19,7 +20,7 @@ export default async function Article({ params }: Props) {
     <aside className="article-aside">{sections.length > 0 && <nav aria-label="In this article"><p className="section-label">In this article</p><ol>{sections.map(section => <li key={section.id}><a href={"#" + section.id}>{section.label}</a></li>)}</ol></nav>}<div className="article-aside-contact"><p>Thinking about your own project?</p><LinkArrow href={contact}>Talk it through</LinkArrow></div></aside>
     <ArticleBody body={post.body} />
    </div>
-   <section className="article-cta" aria-labelledby="article-cta-title"><div><p className="section-label">From reading to doing</p><h2 id="article-cta-title">What would you like<br />to move forward?</h2><p>Share your website, your challenge, or the idea you are working through. We will find a useful place to start.</p></div><div className="article-cta-actions"><a className="article-contact-button" href={contact}>Tell us about your project <span aria-hidden="true">↗</span></a>{service && <a href={service}>Explore how we can help ↗</a>}</div></section>
+   <section className="article-cta" aria-labelledby="article-cta-title"><div><p className="section-label">From reading to doing</p><h2 id="article-cta-title">What would you like<br />to move forward?</h2><p>Share your website, your challenge, or the idea you are working through. We will find a useful place to start.</p></div><div className="article-cta-actions"><a className="article-contact-button" href={contact}>Tell us about your project <span aria-hidden="true"><ArrowIcon /></span></a>{service && <a href={service}>Explore how we can help <ArrowIcon /></a>}</div></section>
   </div>
- </article>{related.length > 0 && <section className="wrap article-related" aria-label="Keep exploring"><h2>Keep exploring.</h2><div>{related.map(item=><a href={"/blog/"+item.slug} key={item.id}><span className="section-label">More perspective</span><h3>{item.title}</h3><span>Read article ↗</span></a>)}</div></section>}</main>;
+ </article>{related.length > 0 && <section className="wrap article-related" aria-label="Keep exploring"><h2>Keep exploring.</h2><div>{related.map(item=><a href={"/blog/"+item.slug} key={item.id}><span className="section-label">More perspective</span><h3>{item.title}</h3><span>Read article <ArrowIcon /></span></a>)}</div></section>}</main>;
 }

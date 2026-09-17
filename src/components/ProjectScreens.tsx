@@ -1,4 +1,5 @@
 "use client";
+import ArrowIcon from "@/components/ArrowIcon";
 
 import Image from "next/image";
 import { useRef, useState } from "react";
@@ -18,7 +19,7 @@ export default function ProjectScreens({ screens }: { screens: Screen[] }) {
           dialog.current?.showModal();
         }}>
           <Image src={screen.src} alt={screen.alt} fill sizes="(max-width: 700px) 100vw, 45vw" unoptimized />
-          <span className="case-gallery-zoom" aria-hidden="true">↗</span>
+          <span className="case-gallery-zoom" aria-hidden="true"><ArrowIcon /></span>
         </button>
         <figcaption><span>{String(index + 1).padStart(2, "0")}</span>{screen.caption}</figcaption>
       </figure>)}
@@ -35,8 +36,8 @@ export default function ProjectScreens({ screens }: { screens: Screen[] }) {
       </div>
       <div className="screen-viewer-image"><Image src={active.src} alt={active.alt} fill sizes="95vw" unoptimized /></div>
       <div className="screen-viewer-controls">
-        <button onClick={() => move(-1)} aria-label="Previous screen">← Previous</button>
-        <button onClick={() => move(1)} aria-label="Next screen">Next →</button>
+        <button onClick={() => move(-1)} aria-label="Previous screen"><ArrowIcon direction="left" /> Previous</button>
+        <button onClick={() => move(1)} aria-label="Next screen">Next <ArrowIcon direction="right" /></button>
       </div>
     </dialog>
   </>;

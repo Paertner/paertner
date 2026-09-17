@@ -1,3 +1,4 @@
+import ArrowIcon from "@/components/ArrowIcon";
 import type { Site } from "@/lib/content";
 import { LinkArrow } from "@/components/ui";
 
@@ -17,7 +18,7 @@ export function Entrance({ site }: { site: Site }) {
           <p className="entrance-description">{site.heroDescription}</p>
           <LinkArrow href="/book">Book a call</LinkArrow>
         </div>
-        <a href="#services" className="entrance-services">Explore our services <span aria-hidden="true">↘</span></a>
+        <a href="#services" className="entrance-services">Explore our services <span aria-hidden="true"><ArrowIcon direction="down-right" /></span></a>
         <p className="entrance-resolution" data-sc-cue="0.44 1 0.06 0.08" data-sc-rise="0">The whole picture.<br /><span>Built together.</span></p>
       </div>
     </section>
@@ -37,7 +38,7 @@ export function SearchArtwork() {
       <div className="search-connection" aria-hidden="true" />
       <div className="search-destination" data-sc-reveal="up" data-sc-reveal-at="0.12 0.72">
         <div className="destination-nav"><img src="/brand/wordmark.svg" alt="" width="100" height="25" /><span>Built around your next move.</span></div>
-        <div className="destination-body"><span className="destination-headline">Find.<br />Connect.<br /><em>Grow.</em></span><div className="destination-side"><span>From the first search<br />to the next conversation.</span><a className="destination-action" href="/book">Book a call <span aria-hidden="true">↗</span></a></div></div>
+        <div className="destination-body"><span className="destination-headline">Find.<br />Connect.<br /><em>Grow.</em></span><div className="destination-side"><span>From the first search<br />to the next conversation.</span><a className="destination-action" href="/book">Book a call <span aria-hidden="true"><ArrowIcon /></span></a></div></div>
       </div>
       <p className="artwork-note">Illustrative search preview. No ranking claim.</p>
     </div>
@@ -100,7 +101,7 @@ export function Capabilities({ services }: { services: ServiceItem[] }) {
   return <section id="services" className="services-section connected-services wrap" data-sc-act="flow">
     <div className="section-heading"><h2>Your next move.<br /><span>Our shared focus.</span></h2><p>Explore a single discipline or bring the whole picture together.</p></div>
     <div className="service-ledger" data-sc-in data-sc-stagger="45">
-      {services.map(s => <a className="service-row" key={s.slug} href={"/services/" + s.slug}><h3>{s.title}</h3><span className="service-short">{s.short}</span><span className="row-arrow" aria-hidden="true">↗</span></a>)}
+      {services.map(s => <a className="service-row" key={s.slug} href={"/services/" + s.slug}><h3>{s.title}</h3><span className="service-short">{s.short}</span><span className="row-arrow" aria-hidden="true"><ArrowIcon /></span></a>)}
     </div>
   </section>;
 }

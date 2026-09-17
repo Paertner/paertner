@@ -1,3 +1,5 @@
+import { privacyPolicy, websiteTerms } from "./legal.ts";
+
 export const serviceSeeds = [
   {
     title: "Business analysis",
@@ -403,10 +405,8 @@ export const siteSeed = {
         "We clarify the goals, review the scope, and propose a practical path forward. The first conversation is about fit and understanding the work.",
     },
   ],
-  privacy:
-    "This website is currently a private project preview.\n\nWhen you submit an inquiry, the site stores the contact details and project information you provide so Paertner can review your request. Do not include sensitive personal information.\n\nThe preview does not use advertising trackers or optional analytics. Essential authentication cookies support the administrative area.\n\nBefore public launch, Paertner must confirm its legal entity, contact details, retention periods, service providers, and applicable privacy rights. This draft must be reviewed and completed before indexing is enabled.",
-  terms:
-    "This website is currently a project preview. Concept projects are independent creative explorations and do not represent commissioned client work, measured results, or endorsements.\n\nSubmitting an inquiry does not create a service agreement or confirm an appointment. Any engagement will be subject to a separate written agreement.\n\nBefore public launch, Paertner must complete and review these terms with its legal entity, jurisdiction, intellectual property terms, and appropriate contact information.",
+  privacy: privacyPolicy,
+  terms: websiteTerms,
 };
 export type Service = (typeof serviceSeeds)[number] & {
   id: number;

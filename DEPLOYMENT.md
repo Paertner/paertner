@@ -1,7 +1,7 @@
 # Paertner production deployment
 
 Last updated: 2026-09-17. Read this file before changing production infrastructure.
-Deployment is being commissioned; see the verification record at the end for actual status.
+Deployment is active; see the verification record at the end for checked behavior.
 
 ## Server and domain
 
@@ -173,4 +173,39 @@ current image, rollback image and needed snapshots before any cleanup.
 - Restricted server-side deploy key and production environment installed with explicit user approval.
 - Initial CMS import: 33 projects, 6 posts, 81 media records, 1 administrator; integrity and foreign-key checks passed.
 - Initial application is live: canonical HTTPS returns 200, www HTTPS redirects with 301; Let's Encrypt certificates issued for both hostnames.
-- End-to-end push-triggered workflow verification: pending.
+- End-to-end GitHub Actions deployment passed: https://github.com/Paertner/paertner/actions/runs/35229925227 . The deployed SHA matched `f3e26c8124bb361c3b4cc3bd87d073a6d0cc1f49`.
+- Main public pages, admin login page, logo, media and sitemap returned 200; all 27 published project detail pages returned 200. Private inquiries returned 403 without authentication.
+- Local TypeScript check and the fresh-database SQLite migration chain passed.
+- All 324 CMS image files/size variants passed GET checks after deployment (81 media records).
+- Isolated deployment harness passed success, build failure, migration failure and failed health-check scenarios. The failure checks verified restoration of the old image/data; production traffic was not disrupted for these simulations.
+- Follow-up SVG arrows and company policy pages passed local iPhone WebKit and Android Chromium checks: no horizontal overflow, no homepage script errors, 9 Privacy sections and 10 Terms sections with the supplied company details.
+
+Setup troubleshooting notes: when adding a new authorized_keys entry, ensure the
+previous entry ends with a newline. Generate the Actions key with a genuinely
+empty passphrase (Windows argument quoting can accidentally set a literal quote
+passphrase). Use standard ssh-keygen to correct it; never dump private-key content
+for diagnosis. Payload's media file endpoints return 404 to HEAD even when GET
+succeeds, so verify media using GET. This is not evidence of missing uploads.
+
+## Company policies and interface conventions
+
+The owner supplied these legal details on 2026-09-17: **Paertner LLC**, registered
+in **Arlington, Virginia, United States**; contact **hello@paertner.com**. Do not
+invent a street address, registration number or additional jurisdiction.
+
+Website policies are authored in `src/lib/legal.ts`. Content version 5 publishes
+them once into the CMS Website content > SEO & legal fields. Subsequent CMS edits
+remain authoritative; changing only the seed file does not replace existing live
+content. Privacy and Terms render section headings and internal links, with no
+preview/draft banner tied to search-engine indexing. Keep privacy statements in
+sync with actual tracking, cookies, service providers and inquiry handling.
+Reference guidance: [FTC privacy and security](https://www.ftc.gov/business-guidance/privacy-security)
+and [ICO privacy notice information](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/the-right-to-be-informed/what-privacy-information-should-we-provide/).
+The text does not certify compliance in every jurisdiction or replace a review
+of the company's actual business practices by qualified counsel.
+
+All interface arrows use `src/components/ArrowIcon.tsx`. Use this SVG component
+for future arrows rather than Unicode glyphs, which iOS can render as colored
+emoji. Direction, inherited color and size remain explicit. Mobile checks use
+WebKit (iPhone profile) and Chromium (Android profile); they are browser emulation,
+not physical-device certification.

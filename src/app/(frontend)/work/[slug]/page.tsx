@@ -1,3 +1,4 @@
+import ArrowIcon from "@/components/ArrowIcon";
 import { notFound, permanentRedirect } from "next/navigation";
 import { getProjects, getSite, cms, asset } from "@/lib/cms";
 import { meta } from "@/lib/seo";
@@ -67,11 +68,11 @@ export default async function Project({ params }: Props) {
         {p.liveURL && (
           <a className="case-live-link" href={p.liveURL} target="_blank" rel="noreferrer">
             <span>Visit live website</span>
-            <span aria-hidden>↗</span>
+            <span aria-hidden><ArrowIcon /></span>
           </a>
         )}
         {!p.liveURL && presentation?.sourceURL && <a className="case-live-link" href={presentation.sourceURL} target="_blank" rel="noreferrer">
-          <span>{presentation.sourceLabel}</span><span aria-hidden>↗</span>
+          <span>{presentation.sourceLabel}</span><span aria-hidden><ArrowIcon /></span>
         </a>}
       </section>
       <div
@@ -148,7 +149,7 @@ export default async function Project({ params }: Props) {
             <span className="section-label">Next project</span>
             <h2>{next.title}</h2>
           </div>
-          <span aria-hidden>↗</span>
+          <span aria-hidden><ArrowIcon /></span>
         </a>
       )}
       <Closing site={site} />

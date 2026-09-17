@@ -1,5 +1,7 @@
 .git
 .github
+/deploy
+/*.md
 .next
 node_modules
 .env*

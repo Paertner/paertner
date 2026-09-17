@@ -1215,12 +1215,9 @@ main {
   max-width: 900px;
   padding-bottom: 120px;
 }
-.legal .draft {
-  padding: 20px 25px;
-  background: var(--surface);
-  font-size: 14px;
-  margin-bottom: 35px;
-}
+.legal .blog-body { max-width: none; margin: 0; white-space: normal; }
+.legal h2 { margin: 40px 0 16px; font-size: clamp(24px, 3vw, 32px); line-height: 1.25; }
+.legal a { text-underline-offset: 4px; }
 .legal p {
   white-space: pre-line;
   color: var(--muted);

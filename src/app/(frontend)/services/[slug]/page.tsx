@@ -1,3 +1,4 @@
+import ArrowIcon from "@/components/ArrowIcon";
 import { serviceGuides } from "@/lib/service-guides";
 import { notFound, permanentRedirect } from "next/navigation";
 import { getServices, getSite, cms, asset } from "@/lib/cms";
@@ -63,7 +64,7 @@ export default async function Service({ params }: Props) {
             {s.deliverables.map((d, i) => (
               <li key={i}>
                 {d.label}
-                <span aria-hidden>↗</span>
+                <span aria-hidden><ArrowIcon /></span>
               </li>
             ))}
           </ul>
@@ -113,7 +114,7 @@ export default async function Service({ params }: Props) {
                 <h3>{t.title}</h3>
                 <span className="service-short">{t.short}</span>
                 <span className="row-arrow" aria-hidden>
-                  ↗
+                  <ArrowIcon />
                 </span>
               </a>
             ))}

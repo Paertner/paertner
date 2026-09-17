@@ -13,6 +13,7 @@ import sharp from "sharp";
 import path from "node:path";
 import fs from "node:fs";
 import { portfolioCatalog } from "./lib/portfolio.ts";
+import { privacyPolicy, websiteTerms } from "./lib/legal.ts";
 import {
   serviceSeeds,
   projectSeeds,
@@ -545,6 +546,14 @@ export default buildConfig({
       await payload.updateGlobal({ slug: "site", data: {
         contentVersion: 4,
         ...(existing.workDescription === previousIntro ? { workDescription: siteSeed.workDescription } : {}),
+      } });
+    }
+    // Publish the approved company policies once; later CMS edits stay authoritative.
+    if (!existing.contentVersion || existing.contentVersion < 5) {
+      await payload.updateGlobal({ slug: "site", data: {
+        contentVersion: 5,
+        privacy: privacyPolicy,
+        terms: websiteTerms,
       } });
     }
   },

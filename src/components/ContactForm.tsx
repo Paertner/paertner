@@ -1,4 +1,5 @@
 "use client";
+import ArrowIcon from "@/components/ArrowIcon";
 import { useState } from "react";
 export default function ContactForm({
   services,
@@ -124,7 +125,7 @@ export default function ContactForm({
       </label>
       <button type="submit" className="form-submit" disabled={busy}>
         <span>{busy ? "Saving your inquiry…" : "Request a conversation"}</span>
-        <span aria-hidden>↗</span>
+        <span aria-hidden><ArrowIcon /></span>
       </button>
       <p className="form-note">
         Your request goes to our private inquiry inbox. We will agree on a time
