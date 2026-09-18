@@ -22,7 +22,7 @@ export default async function Home() {
       <section className="intro wrap" data-sc-act="flow">
         <div className="intro-aside">
           <span className="section-label">The Paertner perspective</span>
-          <img src="/brand/mark.svg" alt="" width="100" height="64" />
+          <img src="/identity/mark.svg" alt="" width="100" height="64" />
         </div>
         <div>
           <h2 data-sc-cue="0.1 0.99 0.16 0" data-sc-kinetic="lines">{site.introTitle}</h2>

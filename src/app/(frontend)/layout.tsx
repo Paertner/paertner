@@ -16,7 +16,10 @@ export const metadata: Metadata = {
   },
   description:
     "Digital marketing and remarkable websites. Connected by a better way of thinking.",
-  icons: { icon: "/brand/favicon.svg" },
+  icons: {
+    icon: "/identity/favicon.svg",
+    apple: "/identity/apple-touch-icon.png",
+  },
 };
 export default async function Layout({
   children,

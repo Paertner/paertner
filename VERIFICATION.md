@@ -1,5 +1,16 @@
 # Verification and handoff
 
+## 2026-09-18: Paertner 2 identity and readable small text
+
+- Applied the supplied gradient mark and wordmark, graphite/white/lime palette, browser and Apple icons, sharing fallback, CMS branding, and green particle effects. Public derivatives are in `public/identity/`; private source artwork remains under `.local/`.
+- Small public-site text has a 14px minimum; previous 14–15px declarations and form controls are 16px. Narrow-header spacing was adjusted to keep the call button on one line at 320px.
+- `npm run typecheck`, `npm run build`, and `git diff --check` pass. The build required permission to spawn Next.js workers outside the sandbox.
+- 32 browser page/viewport checks passed: 20 routes at 1440px, plus Home, Services, Work and Book at 390px, 768px and 320px. No broken images, horizontal document overflow, text below 14px, or browser runtime errors were found.
+- WCAG A/AA scans on Home, Book, Services and Studio reported zero violations. The mobile menu, reduced-motion mark and animated green mark were also checked. Screenshots and reports are in `.local/brandkit-qa/`.
+- These checks cover the local preview; this update has not been deployed.
+
+## Earlier verification history
+
 The local production preview runs at http://localhost:3000. The current revision replaces the earlier entrance film with the specific CloudFront video requested by the user and gives every public page a dark background. Artwork and lime calls to action retain their intentional local colors.
 
 ## Current revision verified

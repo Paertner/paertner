@@ -7,11 +7,11 @@ A complete Next.js website with Payload CMS. Public pages include Home, Work and
 Requires Node 24 and npm.
 
 1. Run `npm ci`.
-2. Place the private `Brandkit` directory beside this README, then run `npm run setup`.
+2. Run `npm run setup` to create the local environment if needed.
 3. Run `npm run dev` and open http://localhost:3000.
 4. Local admin sign-in details are in `.local/ADMIN.md`. They are generated, ignored, and never committed.
 
-The setup command extracts only the four required website logos from the private originals. `Brandkit/`, `public/brand/`, the website plan, creative working files, environment files, uploads, and databases are ignored. Supply the four website logo SVGs securely during deployment; they are intentionally not distributed in this repository.
+The current Paertner 2 web assets are included in `public/identity/`, with source and regeneration notes in that directory. The private original brandkit, legacy `public/brand/` files, website plan, creative working files, environment files, uploads, and databases remain ignored.
 
 ## Editing
 

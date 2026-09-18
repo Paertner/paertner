@@ -89,7 +89,7 @@ export default function Header({
       <header ref={header} className={"header" + (pathname === "/" ? " header--cinema" : "")}>
         <a href="/" aria-label="Paertner home" className="brand">
           <img
-            src="/brand/wordmark-light.svg"
+            src="/identity/wordmark-light.svg"
             alt="Paertner"
             width="172"
             height="40"
@@ -138,7 +138,7 @@ export default function Header({
       >
         <div className="menu-top">
           <img
-            src="/brand/wordmark-light.svg"
+            src="/identity/wordmark-light.svg"
             alt="Paertner"
             width="172"
             height="40"

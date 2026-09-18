@@ -9,7 +9,7 @@ export async function meta(title: string, description: string, path = "/", image
   title = seo?.seoTitle || title;
   description = seo?.seoDescription || description;
   const shareImage = typeof seo?.seoImage === "object" ? seo.seoImage?.url : undefined;
-  image = shareImage || image || site.socialImage?.url || "";
+  image = shareImage || image || site.socialImage?.url || "/identity/social.png";
   const canonical = seo?.canonicalURL || path;
   return {
     title: { absolute: title + " | Paertner" }, description,

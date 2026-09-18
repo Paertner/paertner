@@ -30,14 +30,14 @@ export function SearchArtwork() {
     <div className="search-artwork" role="group" aria-label="An illustrative search preview connected to Paertner's service page">
       <div className="search-query"><span aria-hidden="true">⌕</span><span>web development and digital marketing</span></div>
       <div className="search-result">
-        <a className="search-brand" href="/services"><img src="/brand/mark.svg" width="38" height="22" alt="" /><span>Paertner<small>paertner.com › services</small></span></a>
+        <a className="search-brand" href="/services"><img src="/identity/mark.svg" width="38" height="22" alt="" /><span>Paertner<small>paertner.com › services</small></span></a>
         <p className="search-title"><a href="/services">Your next digital move starts here.</a></p>
         <p>Websites, search and campaigns. One connected partner for the way your business grows.</p>
         <div className="search-sitelinks"><a href="/services/websites-web-apps">Web development</a><a href="/services/seo">SEO</a><a href="/services/digital-marketing">Digital marketing</a></div>
       </div>
       <div className="search-connection" aria-hidden="true" />
       <div className="search-destination" data-sc-reveal="up" data-sc-reveal-at="0.12 0.72">
-        <div className="destination-nav"><img src="/brand/wordmark.svg" alt="" width="100" height="25" /><span>Built around your next move.</span></div>
+        <div className="destination-nav"><img src="/identity/wordmark.svg" alt="" width="100" height="25" /><span>Built around your next move.</span></div>
         <div className="destination-body"><span className="destination-headline">Find.<br />Connect.<br /><em>Grow.</em></span><div className="destination-side"><span>From the first search<br />to the next conversation.</span><a className="destination-action" href="/book">Book a call <span aria-hidden="true"><ArrowIcon /></span></a></div></div>
       </div>
       <p className="artwork-note">Illustrative search preview. No ranking claim.</p>
@@ -64,9 +64,9 @@ export function Discovery({ service }: { service: ServiceItem }) {
 export function CampaignArtwork({ variant = "social" }: { variant?: "social" | "paid" | "brand" }) {
   return (
     <div className={"campaign-art campaign-art--" + variant}>
-      <img className="campaign-brand" src={variant === "social" ? "/brand/wordmark.svg" : "/brand/wordmark-light.svg"} width="130" height="32" alt="Paertner" />
+      <img className="campaign-brand" src={variant === "social" ? "/identity/wordmark.svg" : "/identity/wordmark-light.svg"} width="130" height="32" alt="Paertner" />
       {variant === "social" ? <div className="campaign-message">Good ideas<br />deserve<br /><em>an audience.</em></div> : variant === "paid" ? <div className="campaign-message">Make<br />the next<br /><em>click count.</em></div> : <div className="campaign-message">One voice.<br />Every<br /><em>touchpoint.</em></div>}
-      <div className="campaign-footer"><span>Marketing meets making.</span><img src="/brand/mark.svg" width="90" height="48" alt="" /></div>
+      <div className="campaign-footer"><span>Marketing meets making.</span><img src="/identity/mark.svg" width="90" height="48" alt="" /></div>
     </div>
   );
 }
@@ -90,7 +90,7 @@ export function Campaigns({ services }: { services: ServiceItem[] }) {
               <div className="campaign-caption"><h3><a href={"/services/" + slug}>{s.title}</a></h3><p>{s.short}</p></div>
             </article>;
           })}
-          <div className="campaign-end"><img src="/brand/mark.svg" alt="" width="130" height="68" /><p>From the message<br />to the destination.</p><LinkArrow href="/book?service=Digital%20marketing">Connect your marketing</LinkArrow></div>
+          <div className="campaign-end"><img src="/identity/mark.svg" alt="" width="130" height="68" /><p>From the message<br />to the destination.</p><LinkArrow href="/book?service=Digital%20marketing">Connect your marketing</LinkArrow></div>
         </div>
       </div>
     </section>

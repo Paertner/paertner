@@ -58,7 +58,7 @@ export default function ParticleMark() {
     };
     const random = (n: number) => { const v = Math.sin(n * 127.1 + 311.7) * 43758.5453; return v - Math.floor(v); };
     // Reuse luminous sprites instead of creating thousands of gradients per frame.
-    const sprites = ["151,218,255", "87,199,250", "228,246,255"].map(color => {
+    const sprites = ["188,247,14", "142,207,0", "224,255,157"].map(color => {
       const sprite = document.createElement("canvas"); sprite.width = sprite.height = 64;
       const c = sprite.getContext("2d")!;
       const glow = c.createRadialGradient(32,32,0,32,32,32);
@@ -106,10 +106,10 @@ export default function ParticleMark() {
         if(p.bright) {
           const size=(18+p.depth*22)*scale;
           ctx.drawImage(sprites[p.color],x-size/2,y-size/2,size,size);
-          ctx.fillStyle="#f3fbff";ctx.beginPath();ctx.arc(x,y,(.8+p.depth*.6)*scale,0,Math.PI*2);ctx.fill();
+          ctx.fillStyle="#f3ffdf";ctx.beginPath();ctx.arc(x,y,(.8+p.depth*.6)*scale,0,Math.PI*2);ctx.fill();
         } else {
           ctx.globalAlpha *= .35+p.depth*.65;
-          ctx.fillStyle=["#70bfea","#55c9f7","#d7edfa"][p.color];
+          ctx.fillStyle=["#bcf70e","#8ecf00","#c7fe3d"][p.color];
           const radius=(.25+p.depth*.62)*scale;
           ctx.fillRect(x,y,radius*1.5,radius*1.5);
         }
@@ -126,7 +126,7 @@ export default function ParticleMark() {
       for(let i=0;i<180;i++) {
         const [x,y]=interact(width*random(i+800)+Math.sin(phase*.07+i)*2*scale, height*random(i+1000)+Math.cos(phase*.08+i)*2*scale, .3, 5290+i);
         ctx.globalAlpha=.12+random(i+600)*.35;
-        ctx.fillStyle=i%4===0?"#a6edff":"#98d6f5";
+        ctx.fillStyle=i%4===0?"#dfff99":"#bcf70e";
         ctx.fillRect(x,y,.7*scale,.7*scale);
       }
       ctx.globalAlpha=1;ctx.globalCompositeOperation="source-over";canvas.dataset.ready="true";
@@ -153,5 +153,5 @@ export default function ParticleMark() {
     reduced.addEventListener("change",preference);document.addEventListener("visibilitychange",preference);measure();
     return()=>{surface.removeEventListener("pointermove",move);surface.removeEventListener("pointerleave",leave);surface.removeEventListener("pointercancel",leave);cancelAnimationFrame(frame);observer.disconnect();resize.disconnect();reduced.removeEventListener("change",preference);document.removeEventListener("visibilitychange",preference);};
   },[animated]);
-  return <span className="particle-mark">{animated && <canvas ref={ref} aria-hidden="true"/>}<img src="/brand/mark.svg" alt="" width="841" height="437"/></span>;
+  return <span className="particle-mark">{animated && <canvas ref={ref} aria-hidden="true"/>}<img src="/identity/mark.svg" alt="" width="841" height="437"/></span>;
 }

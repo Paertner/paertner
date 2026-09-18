@@ -385,11 +385,11 @@ export default function ScrollSpark() {
   if (!mounted) return null;
   return createPortal(<svg ref={ref} className="scroll-spark" aria-hidden="true" focusable="false" data-sc-verify-state="hidden">
     <defs>
-      <linearGradient id={`${id}-wake`} data-spark-gradient gradientUnits="userSpaceOnUse"><stop stopColor="#a8efff" stopOpacity=".45" /><stop offset="1" stopColor="#347cdb" stopOpacity="0" /></linearGradient>
+      <linearGradient id={`${id}-wake`} data-spark-gradient gradientUnits="userSpaceOnUse"><stop stopColor="#c7fe3d" stopOpacity=".45" /><stop offset="1" stopColor="#6e9108" stopOpacity="0" /></linearGradient>
       {/* Fixed filter regions avoid clipping when a trail's bounding box becomes flat. */}
       <filter id={`${id}-trail-mist`} data-spark-trail-filter filterUnits="userSpaceOnUse" x="-256" y="-256" width="2560" height="2560"><feGaussianBlur stdDeviation="1.4" /></filter>
-      <radialGradient id={`${id}-star`}><stop stopColor="#ecfcff" /><stop offset=".08" stopColor="#d5f8ff" stopOpacity=".95" /><stop offset=".22" stopColor="#71dcff" stopOpacity=".48" /><stop offset=".55" stopColor="#46caff" stopOpacity=".1" /><stop offset="1" stopColor="#2189dc" stopOpacity="0" /></radialGradient>
-      <radialGradient id={`${id}-white`}><stop stopColor="#ffffff"/><stop offset=".18" stopColor="#ffffff" stopOpacity=".98"/><stop offset=".36" stopColor="#e9faff" stopOpacity=".7"/><stop offset=".68" stopColor="#bceaff" stopOpacity=".15"/><stop offset="1" stopColor="#91d9ff" stopOpacity="0"/></radialGradient>
+      <radialGradient id={`${id}-star`}><stop stopColor="#f7ffe1" /><stop offset=".08" stopColor="#e2ffa3" stopOpacity=".95" /><stop offset=".22" stopColor="#bcf70e" stopOpacity=".48" /><stop offset=".55" stopColor="#9ee000" stopOpacity=".1" /><stop offset="1" stopColor="#6e9108" stopOpacity="0" /></radialGradient>
+      <radialGradient id={`${id}-white`}><stop stopColor="#ffffff"/><stop offset=".18" stopColor="#ffffff" stopOpacity=".98"/><stop offset=".36" stopColor="#f2ffd5" stopOpacity=".7"/><stop offset=".68" stopColor="#c7fe3d" stopOpacity=".15"/><stop offset="1" stopColor="#bcf70e" stopOpacity="0"/></radialGradient>
     </defs>
     <g data-spark-burst opacity="0">
       {Array.from({ length: 1500 }, (_, i) => <circle key={i} data-burst-ray r="0" fill={`url(#${id}-star)`} />)}
@@ -403,7 +403,7 @@ export default function ScrollSpark() {
           {Array.from({length: 22}, (_,i) => <circle key={i} cx={-3-Math.abs(Math.sin(i*2.4))*17} cy={Math.cos(i*1.73)*6} r={1.2+(i%5)*.65} fill={`url(#${id}-white)`} />) }
           <path data-head-filament d="M-25 0Q-10-4 4 0Q-10 4-25 0Z" fill="none" opacity=".6" />
         </g>
-        <path data-head-ember d="M-6 0Q-2-3.2 3-1.2Q6 0 2 1.8Q-2 3-6 0Z" fill="#c8f6ff" />
+        <path data-head-ember d="M-6 0Q-2-3.2 3-1.2Q6 0 2 1.8Q-2 3-6 0Z" fill="#e2ffa3" />
         <ellipse cx="1" rx="2.8" ry="1.6" fill="#ffffff" />
       </g>
     </g>

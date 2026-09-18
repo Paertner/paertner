@@ -117,7 +117,7 @@ export function Footer({ site, services }: { site: Site; services: { label: stri
       <div className="footer-top">
         <a href="/" aria-label="Paertner home">
           <img
-            src="/brand/wordmark-light.svg"
+            src="/identity/wordmark-light.svg"
             alt="Paertner"
             width="240"
             height="56"
