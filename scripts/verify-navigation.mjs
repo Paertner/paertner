@@ -36,7 +36,7 @@ for (const [name, engine, device] of engines) {
       console.log(`${name}: ${href}`);
     }
     await page.goto(base + "/work", { waitUntil: "networkidle" });
-    await page.getByRole("button", { name: "Solution Development", exact: true }).tap();
+    await page.getByRole("button", { name: "Solutions Development", exact: true }).tap();
     assert.ok(await page.locator(".gallery-item").count() > 0);
     assert.doesNotMatch(await page.locator("main").innerText(), /web development/i);
     console.log(`${name}: open/close, all ${links.length} submenu links, and renamed portfolio filter passed`);
