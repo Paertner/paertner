@@ -1,5 +1,12 @@
 # Verification and handoff
 
+## 2026-09-22: Solution Development and Safari submenu taps
+
+- Renamed public Web development labels to Solution Development, including portfolio filtering and legacy CMS project discipline labels at read time.
+- Reproduced the submenu failure in iPhone WebKit: tapping a service link moves focus from SUMMARY to DIALOG, and the shared blur handler hid the link before its click. Mobile details now use native tap behavior; desktop blur closing is limited to keyboard focus changes and hover behavior to mouse pointers.
+- `scripts/verify-navigation.mjs` passed all eight submenu destinations, opening/closing, and the renamed portfolio filter in iPhone WebKit and Android Chromium. Desktop hover navigation and keyboard Enter/Escape also passed. These are browser-emulation checks, not physical iPhone certification.
+- Production build and TypeScript passed. Use `PLAYWRIGHT_BROWSERS_PATH` for locally installed browsers and `TEST_BASE_URL` to run the same read-only navigation checks against another origin.
+
 ## 2026-09-18: Paertner 2 identity and readable small text
 
 - Applied the supplied gradient mark and wordmark, graphite/white/lime palette, browser and Apple icons, sharing fallback, CMS branding, and green particle effects. Public derivatives are in `public/identity/`; private source artwork remains under `.local/`.

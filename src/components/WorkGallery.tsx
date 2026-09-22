@@ -7,7 +7,7 @@ export default function WorkGallery({
 }) {
   const [filter, setFilter] = useState("All");
   const shown = items.filter((i) => filter === "All" || i.categories.includes(filter));
-  const filters = ["All", "Web development", "UI/UX design", "Brand & graphic design", "Social & campaigns", "SEO & analysis"];
+  const filters = ["All", "Solution Development", "UI/UX design", "Brand & graphic design", "Social & campaigns", "SEO & analysis"];
   return (
     <>
       <div className="filters" aria-label="Filter projects">

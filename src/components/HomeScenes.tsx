@@ -13,7 +13,7 @@ export function Entrance({ site }: { site: Site }) {
         </div>
         <div className="entrance-shade" aria-hidden="true" />
         <div className="entrance-copy" data-sc-cue="0 0.43 0 0.22" data-sc-rise="0">
-          <p className="entrance-position">Web development & digital marketing</p>
+          <p className="entrance-position">Solution Development & digital marketing</p>
           <h1 id="hero-title">{site.heroTitle}</h1>
           <p className="entrance-description">{site.heroDescription}</p>
           <LinkArrow href="/book">Book a call</LinkArrow>
@@ -28,12 +28,12 @@ export function Entrance({ site }: { site: Site }) {
 export function SearchArtwork() {
   return (
     <div className="search-artwork" role="group" aria-label="An illustrative search preview connected to Paertner's service page">
-      <div className="search-query"><span aria-hidden="true">⌕</span><span>web development and digital marketing</span></div>
+      <div className="search-query"><span aria-hidden="true">⌕</span><span>Solution Development and digital marketing</span></div>
       <div className="search-result">
         <a className="search-brand" href="/services"><img src="/identity/mark.svg" width="38" height="22" alt="" /><span>Paertner<small>paertner.com › services</small></span></a>
         <p className="search-title"><a href="/services">Your next digital move starts here.</a></p>
         <p>Websites, search and campaigns. One connected partner for the way your business grows.</p>
-        <div className="search-sitelinks"><a href="/services/websites-web-apps">Web development</a><a href="/services/seo">SEO</a><a href="/services/digital-marketing">Digital marketing</a></div>
+        <div className="search-sitelinks"><a href="/services/websites-web-apps">Solution Development</a><a href="/services/seo">SEO</a><a href="/services/digital-marketing">Digital marketing</a></div>
       </div>
       <div className="search-connection" aria-hidden="true" />
       <div className="search-destination" data-sc-reveal="up" data-sc-reveal-at="0.12 0.72">

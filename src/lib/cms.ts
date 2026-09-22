@@ -3,7 +3,7 @@ import { getPayload } from "payload";
 import config from "@payload-config";
 import { cache } from "react";
 import type { Site, Project, Service } from "./content";
-import { projectPresentation } from "./portfolio";
+import { projectPresentation, projectServiceLabel } from "./portfolio";
 export const cms = cache(() => getPayload({ config }));
 export const getSite = cache(async () => {
   const data = await (await cms()).findGlobal({ slug: "site" });
@@ -27,10 +27,11 @@ export const getProjects = cache(async () => {
     overrideAccess: false,
   });
   return r.docs.map((doc) => {
+    const project = { ...doc, services: doc.services?.map(service => ({ ...service, label: projectServiceLabel(service.label) })) || [] };
     const entry = projectPresentation(doc.slug);
-    if (!entry) return doc;
+    if (!entry) return project;
     return {
-      ...doc,
+      ...project,
       image: doc.image || { id: -doc.id, url: entry.cover, alt: doc.title + " — selected project work" },
       screens: doc.screens?.length ? doc.screens : entry.gallery.map((screen, index) => ({
         image: { id: -(index + 1), url: screen.src, alt: screen.alt },

@@ -17,18 +17,25 @@ export default function Header({
   const dropdown = useRef<HTMLDetailsElement>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
+  const submenuPointer = useRef("");
   const pathname = usePathname();
   const submenuEvents = {
+    onPointerDown: (event: React.PointerEvent<HTMLDetailsElement>) => {
+      submenuPointer.current = event.pointerType;
+    },
     onPointerEnter: (event: React.PointerEvent<HTMLDetailsElement>) => {
-      if (event.pointerType !== "touch" && matchMedia("(any-hover: hover)").matches) event.currentTarget.open = true;
+      if (event.pointerType === "mouse" && matchMedia("(any-hover: hover)").matches) event.currentTarget.open = true;
     },
     onPointerLeave: (event: React.PointerEvent<HTMLDetailsElement>) => {
-      if (event.pointerType !== "touch" && !event.currentTarget.querySelector(":focus-visible")) event.currentTarget.open = false;
+      if (event.pointerType === "mouse" && matchMedia("(any-hover: hover)").matches && !event.currentTarget.querySelector(":focus-visible")) event.currentTarget.open = false;
     },
     onBlur: (event: React.FocusEvent<HTMLDetailsElement>) => {
-      if (!event.currentTarget.contains(event.relatedTarget)) event.currentTarget.open = false;
+      // Safari can blur the summary without focusing the tapped link. Hiding
+      // that link here cancels its pending click; outside pointerdown handles it.
+      if (!submenuPointer.current && event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) event.currentTarget.open = false;
     },
     onKeyDown: (event: React.KeyboardEvent<HTMLDetailsElement>) => {
+      submenuPointer.current = "";
       if (event.key === "Escape") {
         event.preventDefault(); event.stopPropagation();
         event.currentTarget.open = false;
@@ -38,7 +45,7 @@ export default function Header({
   };
   const summaryClick = (event: React.MouseEvent<HTMLElement>) => {
     // Hover opens mouse menus; keep native keyboard and touchscreen activation.
-    if (event.detail > 0 && matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    if (event.detail > 0 && submenuPointer.current === "mouse" && matchMedia("(any-hover: hover)").matches) {
       event.preventDefault();
       const details = event.currentTarget.parentElement as HTMLDetailsElement;
       details.open = true;
@@ -152,8 +159,8 @@ export default function Header({
         </div>
         <nav aria-label="Mobile navigation">
           {nav.map((n, i) => n.href === "/services" ? (
-            <details key={n.href} className="mobile-services" {...submenuEvents}>
-              <summary onClick={summaryClick}><span>0{i + 1}</span>Services <span aria-hidden="true">⌄</span></summary>
+            <details key={n.href} className="mobile-services" onKeyDown={submenuEvents.onKeyDown}>
+              <summary><span>0{i + 1}</span>Services <span aria-hidden="true"><CaretDown size={20} /></span></summary>
               <div className="mobile-services-links">
                 <a href="/services">All services</a>
                 {services.map(service => <a key={service.href} href={service.href}>{service.label}</a>)}
